@@ -6,17 +6,25 @@ import datetime
 import glob
 import xmltodict
 
+# Directory to scan for files
 directory = 'C:\\My Files\\Memes'
 # counter
 c = 0
 #metadata = dict()
 metadata = {}
+# Keep XML formatting characters (only useful if convert_to_json is False)
 keep_formatting = False
+# Limit of files to check for metadata
 max_files = 10
+# Save exported data to a timstamped JSON file
 save_to_file = True
+# Convert XML data to JSON
+# Otherwise, the output will be a JSON object with file paths corresponding to XML strings
 convert_to_json = True
+# Wait for user input after running program
 wait = False
 
+# List of extensions that should be exported
 extensions = ('.png', '.pdn')
 
 # https://stackoverflow.com/a/40755802
