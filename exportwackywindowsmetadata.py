@@ -15,6 +15,7 @@ keep_formatting = False
 max_files = 10
 save_to_file = True
 convert_to_json = True
+wait = False
 
 extensions = ('.png', '.pdn')
 
@@ -65,5 +66,6 @@ if save_to_file:
             #json.dump(metadata, f, ensure_ascii=False, indent='\t')
             json.dump(metadata, f, indent='\t')
 
-      #input()
+if wait:
+      input()
 
