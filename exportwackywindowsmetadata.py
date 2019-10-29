@@ -55,17 +55,26 @@ for i, filename in enumerate(filelist[:max_files]):
 #len(metadata.keys())
 print(metadata)
 
+# If this option is enabled, save the JSON data to a JSON file in the same directory as the program
+# The file will be named 'filemeta_metadata_export_' along with a timestamp including the current date and time
 if save_to_file:
+      # Generate timestamp
       timestamp = datetime.datetime.now().strftime("%Y-%m-%d_%H-%M-%S")
+      # Create filename string
       filename = 'filemeta_metadata_export_' + timestamp + '.json'
       #jsondata = json.loads(json.dumps(metadata))
 
+      # Sanity checks
       print(type(metadata))
       print(filename)
+      # Open placeholder file in write mode
       with open(filename, 'w') as f:
+            # Dump JSON data into file and close
+            # Indent with tabs, better than spaces
             #json.dump(metadata, f, ensure_ascii=False, indent='\t')
             json.dump(metadata, f, indent='\t')
 
+# wait
 if wait:
       input()
 
