@@ -36,8 +36,11 @@ filelist = list(filter(lambda x: x.endswith(extensions), allfiles))
 parser = etree.XMLParser(remove_blank_text=True)
 
 #metadata[k[0]]
+# Remove formatting characters (\n, etc.) from XML string
 def cleanXML(xml):
+      # Parse XML with lxml library
       elem = etree.XML(xml, parser=parser)
+      # Convert back to string
       return etree.tostring(elem)
 
 for i, filename in enumerate(filelist[:max_files]):
