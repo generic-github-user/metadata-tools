@@ -1,3 +1,4 @@
+# Import needed libraries
 import os
 import subprocess
 from lxml import etree
@@ -8,10 +9,6 @@ import xmltodict
 
 # Directory to scan for files
 directory = 'C:\\My Files\\Memes'
-# counter
-c = 0
-#metadata = dict()
-metadata = {}
 # Keep XML formatting characters (only useful if convert_to_json is False)
 keep_formatting = False
 # Limit of files to check for metadata
@@ -27,6 +24,10 @@ wait = False
 # List of extensions that should be exported
 extensions = ('.png', '.pdn')
 
+
+c = 0
+metadata = {}
+
 # https://stackoverflow.com/a/40755802
 allfiles = glob.glob(directory + '/**/*', recursive=True)
 #filelist = list(filter(lambda x: x.endswith(extensions), os.listdir(directory)))
@@ -35,7 +36,6 @@ filelist = list(filter(lambda x: x.endswith(extensions), allfiles))
 #k = metadata.keys()
 parser = etree.XMLParser(remove_blank_text=True)
 
-#metadata[k[0]]
 # Remove formatting characters (\n, etc.) from XML string
 def cleanXML(xml):
       # Parse XML with lxml library
@@ -53,15 +53,11 @@ for i, filename in enumerate(filelist[:max_files]):
             data = cleanXML(data)
       data = data.decode('utf-8')
       if convert_to_json:
+            # https://stackoverflow.com/a/10201387
             data = xmltodict.parse(data)
       #metadata[path] = data
       metadata[path] = data
       print('metadata from %s of %s files exported'%(i+1, len(filelist)))
-      
-            #c += 1
-            #continue
-      #else:
-            #continue
 
 #len(metadata.keys())
 print(metadata)
