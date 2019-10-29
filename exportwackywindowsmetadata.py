@@ -66,15 +66,4 @@ if save_to_file:
             json.dump(metadata, f, indent='\t')
 
       #input()
-      
-#TODO:
-#organization?
-#might need to extract jpeg metadata through different means
-#add progressbar
-#remove double backslashes from paths
-
-#DONE:
-#remove formatting/extra characters
-
-
 
