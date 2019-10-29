@@ -4,6 +4,7 @@ from lxml import etree
 import json
 import datetime
 import glob
+import xmltodict
 
 directory = 'C:\\My Files\\Memes'
 # counter
@@ -11,10 +12,9 @@ c = 0
 #metadata = dict()
 metadata = {}
 keep_formatting = False
-max_files = 2500
+max_files = 10
 save_to_file = True
-# add json conversion option
-# add recursive option
+convert_to_json = True
 
 extensions = ('.png', '.pdn')
 
@@ -39,8 +39,11 @@ for i, filename in enumerate(filelist[:max_files]):
       data = subprocess.check_output(['FileMeta', '-ec', path], shell=True)
       if not keep_formatting:
             data = cleanXML(data)
+      data = data.decode('utf-8')
+      if convert_to_json:
+            data = xmltodict.parse(data)
       #metadata[path] = data
-      metadata[path] = data.decode('utf-8')
+      metadata[path] = data
       print('metadata from %s of %s files exported'%(i+1, len(filelist)))
       
             #c += 1
