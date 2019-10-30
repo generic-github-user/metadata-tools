@@ -3,9 +3,11 @@ from PIL import Image, ImageOps
 import pytesseract
 import json
 #import ImageStat
+import matplotlib.pyplot as plt
 
 invert = True
 threshold = 200
+save_preprocessed = False
 
 # List of file names for testing
 #filename = 'Annotation 2019-10-19 160040.png'
@@ -43,6 +45,10 @@ def brightness(image):
 
 # Apply binarization (reduce image to )
 img = img.point(lambda x: 0 if x < threshold else 255)
+if save_preprocessed:
+	plt.imshow(img)
+	img.save('converted-image.png')
+
 lightness = brightness(img)
 print('Brightness averages %s across image'%brightness(img))
 # If invert setting is enabled and binarized image brightness is low, invert the image so the light text becomes dark
