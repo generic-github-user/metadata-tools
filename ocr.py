@@ -41,3 +41,12 @@ lightness = brightness(img)
 if lightness < 0.5 and invert:
 	print('Inverting image before processing...')
 	img = ImageOps.invert(img)
+	
+print('Detected text: \n')
+text = pytesseract.image_to_string(img);
+
+#boxes = pytesseract.image_to_boxes(Image.open(filename));
+#data = pytesseract.image_to_data(Image.open(filename), output_type=pytesseract.Output.DICT);
+#data = json.dumps(data, indent='\t')
+
+print(text)
