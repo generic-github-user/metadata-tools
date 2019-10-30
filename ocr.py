@@ -5,6 +5,7 @@ import json
 #import ImageStat
 
 invert = True
+threshold = 200
 
 #filename = 'Annotation 2019-10-19 160040.png'
 filename = 'testimg1.png'
@@ -13,6 +14,7 @@ filename = 'testimg1.png'
 #filename = 'testimg4.png'
 #filename = 'testimg5.png'
 filename = 'unknown.png'
+filename = 'u.png'
 print('Analyzing %s...'%filename)
 
 img = Image.open(filename)
@@ -34,10 +36,10 @@ def brightness(image):
 		
 	return b / scale
 
-print('Brightness averages %s across image'%brightness(img))
-lightness = brightness(img)
-#img = img.point(lambda x: 0 if x < 200 else 255, '1')
 
+img = img.point(lambda x: 0 if x < threshold else 255)
+lightness = brightness(img)
+print('Brightness averages %s across image'%brightness(img))
 if lightness < 0.5 and invert:
 	print('Inverting image before processing...')
 	img = ImageOps.invert(img)
