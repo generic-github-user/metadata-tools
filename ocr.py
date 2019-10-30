@@ -33,3 +33,11 @@ def brightness(image):
 		b += ratio * (-scale + index)
 		
 	return b / scale
+
+print('Brightness averages %s across image'%brightness(img))
+lightness = brightness(img)
+#img = img.point(lambda x: 0 if x < 200 else 255, '1')
+
+if lightness < 0.5 and invert:
+	print('Inverting image before processing...')
+	img = ImageOps.invert(img)
