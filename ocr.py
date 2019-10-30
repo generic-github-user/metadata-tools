@@ -6,7 +6,7 @@ import json
 import matplotlib.pyplot as plt
 
 invert = True
-threshold = 200
+threshold = 150
 save_preprocessed = False
 
 # List of file names for testing
@@ -47,7 +47,7 @@ def brightness(image):
 img = img.point(lambda x: 0 if x < threshold else 255)
 if save_preprocessed:
 	plt.imshow(img)
-	img.save('converted-image.png')
+	img.save(filename + '-converted-image.png')
 
 lightness = brightness(img)
 print('Brightness averages %s across image'%brightness(img))
