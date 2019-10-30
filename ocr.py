@@ -14,3 +14,10 @@ filename = 'testimg1.png'
 #filename = 'testimg5.png'
 filename = 'unknown.png'
 print('Analyzing %s...'%filename)
+
+img = Image.open(filename)
+img = img.convert('RGB')
+#blackwhite = gray.point(lambda x: 0 if x < 200 else 255, '1')
+
+#stat = ImageStat.Stat(im)
+#avg = stat.mean[0]
