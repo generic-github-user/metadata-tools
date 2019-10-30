@@ -21,3 +21,15 @@ img = img.convert('RGB')
 
 #stat = ImageStat.Stat(im)
 #avg = stat.mean[0]
+
+def brightness(image):
+	grayscale = image.convert('L')
+	histogram = grayscale.histogram()
+	pixels = sum(histogram)
+	b = scale = len(histogram)
+	
+	for index in range (0, scale):
+		ratio = histogram[index] / pixels
+		b += ratio * (-scale + index)
+		
+	return b / scale
