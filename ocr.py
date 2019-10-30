@@ -10,13 +10,6 @@ threshold = 150
 save_preprocessed = False
 
 # List of file names for testing
-#filename = 'Annotation 2019-10-19 160040.png'
-filename = 'testimg1.png'
-#filename = 'testimg2.jpg'
-#filename = 'testimg3.png'
-#filename = 'testimg4.png'
-#filename = 'testimg5.png'
-filename = 'unknown.png'
 filename = 'u.png'
 print('Analyzing %s...'%filename)
 
